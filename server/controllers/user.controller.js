@@ -55,13 +55,12 @@ export async function registerUserController(request,response){
             })
         })
 
-        // return response.json({
-        //     message : "User register successfully",
-        //     error : false,
-        //     success : true,
-        //     data : save
-        // })
-        return response.redirect('https://mern-ecommerce-se3m.onrender.com');
+        return response.json({
+            message : "User register successfully",
+            error : false,
+            success : true,
+            data : save
+        })
 
     } catch (error) {
         return response.status(500).json({
@@ -90,6 +89,7 @@ export async function verifyEmailController(request,response){
             verify_email : true
         })
 
+        return response.redirect('https://mern-ecommerce-se3m.onrender.com');
         return response.json({
             message : "Verify email done",
             success : true,
