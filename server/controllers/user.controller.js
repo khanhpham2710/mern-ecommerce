@@ -43,8 +43,8 @@ export async function registerUserController(request,response){
 
         const newUser = new UserModel(payload)
         const save = await newUser.save()
-
-        const VerifyEmailUrl = `${process.env.FRONTEND_URL}/verify-email?code=${save?._id}`
+        // const VerifyEmailUrl = `${process.env.FRONTEND_URL}/verify-email?code=${save?._id}`
+        const VerifyEmailUrl = `https://mern-ecommerce-se3m.onrender.com/api/user/verify-email?code=${save?._id}`
 
         const verifyEmail = await sendEmail({
             sendTo : email,
@@ -55,12 +55,13 @@ export async function registerUserController(request,response){
             })
         })
 
-        return response.json({
-            message : "User register successfully",
-            error : false,
-            success : true,
-            data : save
-        })
+        // return response.json({
+        //     message : "User register successfully",
+        //     error : false,
+        //     success : true,
+        //     data : save
+        // })
+        return response.redirect('https://mern-ecommerce-se3m.onrender.com');
 
     } catch (error) {
         return response.status(500).json({
