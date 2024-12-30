@@ -27,8 +27,16 @@ app.use(express.json())
 app.use(cookieParser())
 // app.use(morgan())
 app.use(helmet({
-    crossOriginResourcePolicy : true
-}))
+    crossOriginResourcePolicy: {
+      policy: 'cross-origin'
+    },
+    contentSecurityPolicy: {
+      directives: {
+        'default-src': ["'self'"],
+        'img-src': ["'self'", 'https://res.cloudinary.com'],
+      }
+    }
+  }));
 
 const _dirname = path.resolve();
 
