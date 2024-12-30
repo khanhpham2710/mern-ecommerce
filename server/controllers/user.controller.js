@@ -127,13 +127,13 @@ export async function loginController(request,response){
             })
         }
 
-        if(!user.verify_email){
-            return response.status(400).json({
-                message : "Email not verify",
-                error : true,
-                success : false
-            })
-        }
+        // if(!user.verify_email){
+        //     return response.status(400).json({
+        //         message : "Email not verify",
+        //         error : true,
+        //         success : false
+        //     })
+        // }
 
         if(user.status !== "Active"){
             return response.status(400).json({
