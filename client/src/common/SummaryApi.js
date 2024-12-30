@@ -1,4 +1,4 @@
-export const baseURL = import.meta.env.VITE_API_URL
+export const baseURL = import.meta.env.VITE_API_URL || "https://mern-ecommerce-se3m.onrender.com/api"
 
 const SummaryApi= {
     register : {
