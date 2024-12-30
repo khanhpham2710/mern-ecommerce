@@ -56,7 +56,7 @@ export async function registerUserController(request,response){
         })
 
         return response.json({
-            message : "User register successfully",
+            message : "User register successfully. Verify through email",
             error : false,
             success : true,
             data : save
@@ -89,7 +89,7 @@ export async function verifyEmailController(request,response){
             verify_email : true
         })
 
-        return response.redirect('https://mern-ecommerce-se3m.onrender.com');
+        return response.redirect('https://mern-ecommerce-se3m.onrender.com/login');
         return response.json({
             message : "Verify email done",
             success : true,
@@ -109,7 +109,6 @@ export async function loginController(request,response){
     try {
         const { email , password } = request.body
 
-
         if(!email || !password){
             return response.status(400).json({
                 message : "provide email, password",
@@ -123,6 +122,14 @@ export async function loginController(request,response){
         if(!user){
             return response.status(400).json({
                 message : "User not register",
+                error : true,
+                success : false
+            })
+        }
+
+        if(!user.verify_email){
+            return response.status(400).json({
+                message : "Email not verify",
                 error : true,
                 success : false
             })
