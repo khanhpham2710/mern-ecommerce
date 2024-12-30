@@ -20,14 +20,14 @@ const app = express()
 
 app.use(cors({
     credentials : true,
-    origin : "https://mern-ecommerce-se3m.onrender.com"
+    origin : process.env.FRONTEND_URL || "https://mern-ecommerce-se3m.onrender.com"
 }))
 
 app.use(express.json())
 app.use(cookieParser())
 // app.use(morgan())
 app.use(helmet({
-    crossOriginResourcePolicy : false
+    crossOriginResourcePolicy : true
 }))
 
 const _dirname = path.resolve();
