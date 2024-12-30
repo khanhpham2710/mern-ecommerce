@@ -92,8 +92,8 @@ export async function paymentController(request,response){
                 addressId : addressId
             },
             line_items : line_items,
-            success_url : `${process.env.FRONTEND_URL}/success`,
-            cancel_url : `${process.env.FRONTEND_URL}/cancel`
+            success_url : `https://mern-ecommerce-se3m.onrender.com/success`,
+            cancel_url : `https://mern-ecommerce-se3m.onrender.com/cancel`
         }
 
         const session = await Stripe.checkout.sessions.create(params)

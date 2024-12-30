@@ -20,7 +20,7 @@ const app = express()
 
 app.use(cors({
     credentials : true,
-    origin : process.env.FRONTEND_URL
+    origin : "https://mern-ecommerce-se3m.onrender.com"
 }))
 
 app.use(express.json())
@@ -34,13 +34,12 @@ const _dirname = path.resolve();
 
 const PORT = 8080 || process.env.PORT 
 
-app.get("/",(request,response)=>{
+app.get("/health",(request,response)=>{
     ///server to client
     response.json({
         message : "Server is running " + PORT
     })
 })
-
 
 app.use('/api/user',userRouter)
 app.use("/api/category",categoryRouter)
